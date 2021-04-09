@@ -1,0 +1,61 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form method="post" action="/product/create" id="productform" enctype="multipart/form-data">
+	<input type="text" name="name" value="testproduct">
+	<!-- Categories as tags -->
+	<input type="text" name="_categories" value="test test2 test3">
+	<!-- Hidden Categories here -->
+	<!-- 
+	<input  type="hidden" name="categories[]">
+	 -->
+	<input  type="hidden" name="categories[]" value="test">
+	<input  type="hidden" name="categories[]" value="test2">
+	<input  type="hidden" name="categories[]" value="test3">
+
+	<input type="text" name="description" value="dit is een test beschrijving">
+
+	<label for="listed">Visibility:</label>
+	<select name="listed" id="listed" form="productform">
+		<option value="1">
+			Listed
+		</option>
+		<option value="0">
+			Unlisted
+		</option>
+	</select>
+	<label for="available">Is product available:</label>
+	<select name="available" id="available" form="productform">
+		<option value="1">
+			Yes
+		</option>
+		<option value="0">
+			No
+		</option>
+	</select>
+
+	<ul>
+		<!-- Images here -->
+		<!-- 
+		<li class="image">
+			<input type="file" name="image[]">
+		</li>
+		 -->
+		 <li class="image">
+			<input type="file" name="image[]" accept="image/*">
+		</li>
+		<li class="image">
+			<input type="file" name="image[]" accept="image/*">
+		</li>
+		<li class="add-image">
+			<input type="file" name="_img" accept="image/*">
+		</li>	
+	</ul>
+	<input type="submit" name="">
+</form>
